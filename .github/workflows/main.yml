@@ -16,8 +16,9 @@ jobs:
     - run: |
         echo "A initial message"
         ls
+        ls ~/.ssh
         echo "Another message or command"
         #python myscript.py
-        bash some-shell-script-file.sh -xe
+        #bash some-shell-script-file.sh -xe
     - run: echo "One last message"
      
