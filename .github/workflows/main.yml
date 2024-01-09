@@ -16,8 +16,9 @@ jobs:
     - run: |
         echo "A initial message"
         ls
-        ssh-keyscan auth.thinkovation.com
-        #ls ~/.ssh
+        mkdir -p ~/.ssh
+        ssh-keyscan auth.thinkovation.com > ~/.ssh/known_hosts
+        ls ~/.ssh
         echo "Another message or command"
         #python myscript.py
         #bash some-shell-script-file.sh -xe
