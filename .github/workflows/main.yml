@@ -17,7 +17,7 @@ jobs:
         echo "A initial message"
         ls
         ssh auth.thinkovation.com ssh-keygen -l -f /etc/ssh/ssh_host_ed25519_key.pub | cut -d ' ' -f2
-        ls ~/.ssh
+        #ls ~/.ssh
         echo "Another message or command"
         #python myscript.py
         #bash some-shell-script-file.sh -xe
