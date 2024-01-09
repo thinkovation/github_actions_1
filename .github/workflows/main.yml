@@ -31,7 +31,7 @@ jobs:
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.SSH_PORT }}
-        fingerprint: "SHA256:nmMn/VQtTHCt1eu8L19lwHxfXIeYAD3nyz10Q0JLkOk"
+        fingerprint: ${{ secrets.SSH_FINGERPRINT }}
         script: |
           # Remove existing binary and assets folder
           ls ~/
