@@ -1,4 +1,4 @@
-# Step 1 V2
+# Step 1 V4
 name: Deploy Go Program
 
 on:
@@ -27,7 +27,7 @@ jobs:
           mkdir -p ~/test
           ls ~/test/
           touch ~/test/foo.md
-          #scp -r test.md ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:~/test
+          scp -r test.md ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:~/test
           ls ~/test/
     
      
