@@ -29,4 +29,5 @@ jobs:
       - name: Copy stuff
         run: |
           ls ~/
+          ls ${{ github.workspace }}
           #scp -r test.md ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:~/test
