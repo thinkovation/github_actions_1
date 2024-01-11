@@ -19,10 +19,12 @@ jobs:
             IdentityFile ~/.ssh/staging.key
             StrictHostKeyChecking no
           END
+          cat >>~/.ssh/known_hosts $SSH_FINGERPRINT
         env:
           SSH_USER: ${{ secrets.SSH_USERNAME }}
           SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_FINGERPRINT: ${{secrets.SSH_FINGERPRINT}}
       - name: "Checkout repository"
         uses: actions/checkout@v2
 
@@ -30,4 +32,7 @@ jobs:
         run: |
           ls ~/
           ls ${{ github.workspace }}
-          scp -r ${{ github.workspace }}/test.md ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:~/test
+          ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}  'rm -rf ~/test'
+          ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}  'mkdir -p ~/test'
+          
+          scp -r ${{ github.workspace }}/test.md ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:~/test/test.md
