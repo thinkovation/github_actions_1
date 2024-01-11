@@ -23,7 +23,10 @@ jobs:
           SSH_USER: ${{ secrets.SSH_USERNAME }}
           SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SSH_HOST: ${{ secrets.SSH_HOST }}
+      - name: "Checkout repository"
+        uses: actions/checkout@v2
+
       - name: Copy stuff
         run: |
           ls ~/
-          scp -r test.md ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:~/test
+          #scp -r test.md ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:~/test
