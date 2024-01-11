@@ -20,6 +20,7 @@ jobs:
             StrictHostKeyChecking no
           END
           echo "$SSH_FINGERPRINT" > ~/.ssh/known_hosts
+          ls ~/.ssh
         env:
           SSH_USER: ${{ secrets.SSH_USERNAME }}
           SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
@@ -30,10 +31,8 @@ jobs:
 
       - name: Copy stuff
         run: |
-          ls ~/
-          ls ${{ github.workspace }}
-          ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}  'rm -rf /home/msauth/test'
-          ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}  'ls /home/msauth'
-          ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}  'mkdir -p /home/msauth/test'
-          ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}  'ls /home/msauth'
+          ssh staging  'rm -rf /home/msauth/test'
+          ssh staging  'ls /home/msauth'
+          ssh staging  'mkdir -p /home/msauth/test'
+          ssh staging  'ls /home/msauth'
           #scp -r ${{ github.workspace }}/test.md ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:~/test/test.md
