@@ -1,4 +1,4 @@
-name: CI
+name: Experimental Workflows
 on: workflow_dispatch
 jobs:
   # test:
@@ -32,7 +32,8 @@ jobs:
         run: |
           ls ~/
           ls ${{ github.workspace }}
-          ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}  'rm -rf ~/test'
-          ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}  'mkdir -p ~/test'
-          
-          scp -r ${{ github.workspace }}/test.md ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:~/test/test.md
+          ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}  'rm -rf /home/msauth/test'
+          ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}  'ls /home/msauth'
+          ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}  'mkdir -p /home/msauth/test'
+          ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}  'ls /home/msauth'
+          #scp -r ${{ github.workspace }}/test.md ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:~/test/test.md
