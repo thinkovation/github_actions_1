@@ -39,4 +39,4 @@ jobs:
           ls /home/runner/work/github_actions_1
           ls /home/runner/work/github_actions_1/github_actions_1
           cat ${{ github.workspace }}/test.md
-          scp -r ${{ github.workspace }}/test.md staging:~/test/test.md
+          scp -r ${{ github.workspace }}/test.md staging:/home/msauth/test/test.md
