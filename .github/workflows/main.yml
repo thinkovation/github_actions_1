@@ -23,6 +23,7 @@ jobs:
         script: |
           # Remove existing binary and assets folder
           ls ~/
+          rm -rf ~/test
           mkdir -p ~/test
           ls ~/test/
           touch ~/test/foo.md
