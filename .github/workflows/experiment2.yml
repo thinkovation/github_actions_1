@@ -1,0 +1,25 @@
+name: Experiments with appleboy/ssh-action
+on: workflow_dispatch
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Copy assets and binary to remote server
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: ${{ secrets.SSH_PORT }}
+        fingerprint: ${{ secrets.SSH_FINGERPRINT }}
+        script: |
+          # Remove existing binary and assets folder
+          ls /home/msauth/
+          rm -rf /home/msauth/test2
+          mkdir -p /home/msauth/test2
+          ls /home/msauth/test2/
+          touch /home/msauth/test2/foo.md
+          scp -r test.md ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/home/msauth/test2/
+          ls /home/msauth/test/
