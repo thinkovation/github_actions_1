@@ -21,5 +21,5 @@ jobs:
           mkdir -p /home/msauth/test2
           ls /home/msauth/test2/
           touch /home/msauth/test2/foo.md
-          scp -r test.md ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/home/msauth/test2/
+          scp -r test.md ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/home/msauth/test2/test.md
           ls /home/msauth/test/
