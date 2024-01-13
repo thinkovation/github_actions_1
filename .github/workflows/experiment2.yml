@@ -6,6 +6,10 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+    - name: List repo files
+      run: |
+        ls ${{ github.workspace }}
+
     - name: Copy assets and binary to remote server
       uses: appleboy/ssh-action@master
       with:
