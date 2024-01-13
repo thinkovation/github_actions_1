@@ -33,6 +33,7 @@ jobs:
 
       - name: Copy stuff
         run: |
+          cat ~/.ssh/known_hosts
           ssh staging  'rm -rf /home/msauth/test'
           ssh staging  'ls /home/msauth'
           ssh staging  'mkdir -p /home/msauth/test'
