@@ -6,6 +6,10 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+    - name: List repo files
+      run: |
+        ls ${{ github.workspace }}
+
     - name: Copy assets and binary to remote server
       uses: appleboy/ssh-action@master
       with:
@@ -20,6 +24,6 @@ jobs:
           rm -rf /home/msauth/test2
           mkdir -p /home/msauth/test2
           ls /home/msauth/test2/
-          touch /home/msauth/test2/foo.md
-          scp -r test.md ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/home/msauth/test2/test.md
+          touch /home/msauth/test2/foo2.md
+          scp -r ${{ github.workspace }}/test.md ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/home/msauth/test2/
           ls /home/msauth/test/
