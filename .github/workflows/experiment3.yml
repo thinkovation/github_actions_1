@@ -51,5 +51,5 @@ jobs:
           ls /home/runner/work/github_actions_1
           ls /home/runner/work/github_actions_1/github_actions_1
           cat ${{ github.workspace }}/test.md
-          scp -r ${{ github.workspace }}/test.md staging:/home/msauth/test/test.md
+          scp -r ${{ github.workspace }}/exp staging:/home/msauth/test/exp
           scp -r ${{ github.workspace }}/assets staging:/home/msauth/test/assets
